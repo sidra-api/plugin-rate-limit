@@ -1,5 +1,5 @@
-module github.com/sidra-gateway/sidra-plugins
+module plugin-ratelimit
 
-go 1.23.2
+go 1.23.1
 
 require github.com/sidra-gateway/go-pdk v1.0.3

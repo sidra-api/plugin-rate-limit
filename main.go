@@ -51,5 +51,5 @@ func rateLimitHandler(req server.Request) server.Response {
 
 func main() {
 	go resetRateLimit()
-	server.NewServer("rate-limit", rateLimitHandler).Start()
+	server.NewServer("ratelimit", rateLimitHandler).Start()
 }
