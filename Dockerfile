@@ -8,13 +8,13 @@ WORKDIR /app
 COPY . .
 
 # Build binary plugin
-RUN go mod tidy && go build -o plugin-ratelimit main.go
+RUN go mod tidy && go build -o plugin-rate-limit main.go
 
 # Gunakan image minimal untuk hasil akhir
 FROM alpine:latest
 
 # Copy binary dari stage builder ke stage ini
-COPY --from=builder /app/plugin-ratelimit /usr/local/bin/plugin-ratelimit
+COPY --from=builder /app/plugin-rate-limit /usr/local/bin/plugin-rate-limit
 
 # Jalankan binary
-ENTRYPOINT ["/usr/local/bin/plugin-ratelimit"]
+ENTRYPOINT ["/usr/local/bin/plugin-rate-limit"]
