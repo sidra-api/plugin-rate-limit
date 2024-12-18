@@ -20,6 +20,7 @@ func resetRateLimit() {
 		rateLimitMutex.Lock()
 		rateLimitMap = make(map[string]int)
 		rateLimitMutex.Unlock()
+		log.Println("INFO: Rate limit map has been reset.")
 	}
 }
 
@@ -42,14 +43,14 @@ func rateLimitHandler(req server.Request) server.Response {
 
 	// Jika jumlah permintaan melebihi batas, kembalikan respons 429 Too Many Requests
 	if currentCount > rateLimitPerMinute {
-		log.Printf("Rate limit exceeded for IP: %s", clientIP)
+		log.Printf("Rate limit exceeded for IP: %s (Requests: %d)", clientIP, currentCount)
 		return server.Response{
 			StatusCode: 429,
 			Body:       "Rate limit exceeded",
 		}
 	}
 
-	log.Printf("Rate limit OK for IP: %s", clientIP)
+	log.Printf("Rate limit OK for IP: %s (Requests: %d)", clientIP, currentCount)
 	return server.Response{
 		StatusCode: 200,
 		Body:       "Request allowed",
