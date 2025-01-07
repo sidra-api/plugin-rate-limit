@@ -47,14 +47,9 @@ To develop and test the plugin locally:
 2. Clone the repository and navigate to the project directory.
 3. Build and run the plugin:
     ```sh
-    go build -o plugin-rate-limit main.go
-    ./plugin-rate-limit
+    go build -o rate-limit main.go
+    ./rate-limit
     ```
-
-## Contributing
-
-Contributions are welcome! Please open an issue or submit a pull request.
-
 ## License
 
 This project is licensed under the MIT License.
