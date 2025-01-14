@@ -26,6 +26,7 @@ func resetRateLimit() {
 
 // Handler utama untuk memproses setiap permintaan yang masuk
 func rateLimitHandler(req server.Request) server.Response {
+	log.Printf("Received headers: %v", req.Headers)
 	clientIP := req.Headers["X-Real-IP"]
 	if clientIP == "" {
 		log.Println("Missing X-Real-IPheader")
